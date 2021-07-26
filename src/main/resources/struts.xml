@@ -7,11 +7,42 @@
 
     <constant name="struts.devMode" value="true" />
 
-    <package name="/" extends="struts-default">
+    <package name="default" extends="struts-default" namespace="/">
         <default-action-ref name="index"/>
+
         <action name="index">
-            <result>/index.jsp</result>
+            <result >/index.jsp</result>
         </action>
+        <action name="products" class="com.vent.Action.Home">
+            <result >/products.jsp</result>
+        </action>
+
+        <action name="register">
+            <result>/register.jsp</result>
+        </action>
+
+        <action name="payment">
+            <result>/payment-page.jsp</result>
+        </action>
+
+        <action name="login">
+            <result>/login.jsp</result>
+        </action>
+
+        <action name="shopping">
+            <result>/shopping-cart.jsp</result>
+        </action>
+
+        <action name="product">
+            <result>/product-page.jsp</result>
+        </action>
+
+        <action name="loginUser" class="com.vent.Action.LoginUser">
+            <result name="success">/index.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+
     </package>
+
 
 </struts>

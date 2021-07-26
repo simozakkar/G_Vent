@@ -25,6 +25,7 @@
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.8.1" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.18" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.6.1" />
+          <element id="library" level="project" name="Maven: com.jgeppert.struts2.jquery:struts2-jquery-plugin:4.0.3" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:5.4.18.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.2.Final" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.4.18.Final" />

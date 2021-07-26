@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MySQL - poolaviation@localhost" uuid="c7adb551-a7fc-44ee-8dca-72cc704c4d2c">
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="0e0f4dbb-861e-4d95-a916-ce1181136389">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+/media/ez/New Volume/Master/2021/S2/JEE/vent/src/main/resources/hibernate.cfg.xml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/poolaviation</jdbc-url>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/ventDB</jdbc-url>
     </data-source>
   </component>
 </project>

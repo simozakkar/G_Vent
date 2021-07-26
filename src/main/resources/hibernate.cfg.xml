@@ -11,11 +11,9 @@
     <property name="hibernate.connection.password">Password@2021</property>
     <property name="hibernate.current_session_context_class">thread</property>
 <!--    <property name="hibernate.jdbc.time_zone">UTC</property>-->
-<!--    <mapping class="org.vestra.entity.Achats"/>-->
-<!--    <mapping class="org.vestra.entity.Citerne"/>-->
-<!--    <mapping class="org.vestra.entity.Avitailleur"/>-->
-<!--    <mapping class="org.vestra.entity.Chauffeur"/>-->
-
+    <mapping class="com.vent.Article.Article"/>
+    <mapping class="com.vent.User.User"/>
+    <mapping class="com.vent.Cmd.Cmd"/>
     <!-- DB schema will be updated if needed -->
 <!--     <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>
