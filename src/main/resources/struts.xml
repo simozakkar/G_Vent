@@ -33,8 +33,9 @@
             <result>/shopping-cart.jsp</result>
         </action>
 
-        <action name="product">
-            <result>/product-page.jsp</result>
+        <action name="product" class="com.vent.Action.Product">
+            <result name="success">/product-page.jsp</result>
+            <result name="error">/index.jsp</result>
         </action>
 
         <action name="loginUser" class="com.vent.Action.LoginUser">

@@ -39,6 +39,7 @@
                             Shopping Cart
                         </a>
                     </li>
+<%--                    <s:if test="%{sess}"></s:if>--%>
                     <li class="nav-item"><a class="nav-link" href="login.action">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="register.action">Register</a></li>
                 </ul>
@@ -188,9 +189,6 @@
     <script>
         $.ajax({
             type: "POST",
-            // I am using struts2+struts2-json-plugin-2.2.1.jar, these do not need to set
-            //contentType: "text/html;charset=utf-8",
-            //contentType: "application/json;charset=utf-8",
             url: "/products.action",
             data:{
                 gender: "A"
@@ -207,9 +205,6 @@
                 $('#allGender_').prop('checked', true);
                 $.ajax({
                     type: "POST",
-                    // I am using struts2+struts2-json-plugin-2.2.1.jar, these do not need to set
-                    //contentType: "text/html;charset=utf-8",
-                    //contentType: "application/json;charset=utf-8",
                     url: "/products.action",
                     data:{
                         gender: "A"
@@ -223,9 +218,6 @@
                 $('#menGender_').prop('checked', true);
                 $.ajax({
                     type: "POST",
-                    // I am using struts2+struts2-json-plugin-2.2.1.jar, these do not need to set
-                    //contentType: "text/html;charset=utf-8",
-                    //contentType: "application/json;charset=utf-8",
                     url: "/products.action",
                     data:{
                         gender: "M"
@@ -239,7 +231,6 @@
                 $('#womenGender_').prop('checked', true);
                 $.ajax({
                     type: "POST",
-                    // I am using struts2+struts2-json-plugin-2.2.1.jar, these do not need to set
                     //contentType: "text/html;charset=utf-8",
                     //contentType: "application/json;charset=utf-8",
                     url: "/products.action",

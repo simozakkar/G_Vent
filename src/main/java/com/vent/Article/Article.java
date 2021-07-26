@@ -17,6 +17,16 @@ public class Article {
 
     private String descArt;
 
+    private String rating;
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
     public int getCodeArt() {
         return codeArt;
     }
@@ -55,6 +65,16 @@ public class Article {
 
     public void setDescArt(String descArt) {
         this.descArt = descArt;
+    }
+
+    public int getStars(){
+        return Integer.parseInt(String.valueOf(this.rating.charAt(0)));
+    }
+    public int getStarsHalfEmpty(){
+        return Integer.parseInt(String.valueOf(this.rating.charAt(1)));
+    }
+    public int getStarsEmpty(){
+        return Integer.parseInt(String.valueOf(this.rating.charAt(2)));
     }
 
     @Override

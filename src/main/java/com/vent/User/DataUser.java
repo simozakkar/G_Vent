@@ -19,7 +19,7 @@ public class DataUser {
 
     public static User getUser(String username, String psw){
 
-        User user = null;
+        User user ;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             String query = "SELECT * FROM Users WHERE userName=:username AND userPsw=:psw";

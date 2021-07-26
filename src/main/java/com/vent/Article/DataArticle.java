@@ -14,6 +14,17 @@ public class DataArticle {
                 .setParameter("gender", gender).list();
     }
 
+    public static Article getArticle(int idArt) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            String query = "SELECT * FROM Articles WHERE codeArt=:idArt";
+            return session.createNativeQuery(query, Article.class)
+                    .setParameter("idArt", idArt).getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
+    }
+
     public void insertArticle(){
 
     }
