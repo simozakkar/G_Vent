@@ -21,3 +21,11 @@ html, body {
   position: absolute;
   top: 46%;
 }
+.carousel-indicators li{
+  background-color: #dd1616;
+}
+
+.clean-block {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}

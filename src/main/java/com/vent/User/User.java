@@ -1,6 +1,9 @@
 package com.vent.User;
 
+import com.vent.Cmd.Cmd;
+
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -10,9 +13,43 @@ public class User {
     @Id
     private int codeUser;
 
-    private String userName;
+    private String username;
 
-    private String userPsw;
+    private String psw;
+
+    private String name;
+
+    //mapping**************************************************
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL )
+    private List<Cmd> cmds;
+
+    public User() {
+
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPsw() {
+        return psw;
+    }
+
+    public void setPsw(String psw) {
+        this.psw = psw;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getCodeUser() {
         return codeUser;
@@ -22,19 +59,17 @@ public class User {
         this.codeUser = codeUser;
     }
 
-    public String getUserName() {
-        return userName;
+    public List<Cmd> getCmds() {
+        return cmds;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setCmds(List<Cmd> cmds) {
+        this.cmds = cmds;
     }
 
-    public String getUserPsw() {
-        return userPsw;
-    }
-
-    public void setUserPsw(String userPsw) {
-        this.userPsw = userPsw;
+    public User(String fullname, String userName, String userPsw) {
+        this.name = fullname;
+        this.username = userName;
+        this.psw = userPsw;
     }
 }

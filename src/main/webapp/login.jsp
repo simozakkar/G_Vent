@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: root
@@ -18,7 +19,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
     <main class="page login-page">
         <section class="clean-block clean-form dark">
             <div class="container">
@@ -26,7 +26,7 @@
                     <a class="navbar-brand logo" href="index.action"><img src="assets/img/logo_.png" style="width: 110px;height: 50px;"></a>
                     <h2 class="text-info">Log In</h2>
                 </div>
-                <form action="loginUser.action" method="POST">
+                <form action="loginUser.action" method="post">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input class="form-control item" type="text" name="username" id="username">
@@ -47,49 +47,18 @@
         </section>
     </main>
     <footer class="page-footer dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h5>Get started</h5>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Downloads</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>About us</h5>
-                    <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Reviews</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help desk</a></li>
-                        <li><a href="#">Forums</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Legal</h5>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div class="footer-copyright">
-            <p>© 2021 Copyright Text</p>
+            <p>© 2021 UAE FS TETOUAN</p>
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+
+    </script>
 </body>
+
+
 
 </html>

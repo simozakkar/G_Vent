@@ -38,10 +38,12 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="0e0f4dbb-861e-4d95-a916-ce1181136389" />
+          <unit-entry name="hibernateStock.cfg.xml" />
+          <unit-entry name="vent" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernateStock.cfg.xml" />
       </configuration>
     </facet>
   </component>

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -51,16 +51,19 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="gallery">
-                                    <div class="sp-wrap">
-                                        <a href="assets/img/produits/<s:property value="idArt"/>.jpg">
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/produits/<s:property value="idArt"/>.jpg">
-                                        </a>
-                                        <a href="assets/img/produits/<s:property value="idArt"/>.jpg">
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/produits/<s:property value="idArt"/>.jpg">
-                                        </a>
-                                        <a href="assets/img/produits/<s:property value="idArt"/>.jpg">
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/produits/<s:property value="idArt"/>.jpg">
-                                        </a>
+                                    <div id="sliderProduct" class="carousel slide" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#sliderProduct" data-slide-to="0" class="active"></li>
+                                            <li data-target="#sliderProduct" data-slide-to="1"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img class="d-block w-100" src="assets/img/produits/<s:property value="idArt"/>.jpg" alt="First slide">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="d-block w-100" src="assets/img/produits/1.jpg" alt="Second slide">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -78,12 +81,28 @@
                                             <img src="assets/img/icons/star-empty.svg">
                                         </s:iterator>
                                     </div>
+                                    <div class="category">
+                                        <span style="font-weight: bold"><s:property value="article.categ"/></span> for <span style="font-weight: bold"><s:if test='%{article.genderArt == "M"}'>Men</s:if><s:else>Women</s:else></span>
+                                    </div>
                                     <div class="price">
                                         <h3>$<s:property value="article.prixArt"/></h3>
                                     </div>
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="icon-basket"></i>Add to Cart
-                                    </button>
+                                    <s:if test="%{quantity > 0}">
+                                        <s:if test="%{quantity < 16}">
+                                            <p><span class="text-danger">Only <s:property value="quantity"/> left in stock - order soon</span></p>
+                                        </s:if>
+                                        <s:url var="paymentPage" action="payment">
+                                            <s:param name="idArt" value="idArt"/>
+                                        </s:url>
+                                        <s:a href="%{paymentPage}" >
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="icon-basket"></i>Add to Cart
+                                            </button>
+                                        </s:a>
+                                    </s:if>
+                                    <s:else>
+                                        <span class="text-danger">Currently unavailable.</span>
+                                    </s:else>
                                     <div class="summary">
                                         <p><s:property value="article.descArt"/></p>
                                     </div>
@@ -103,8 +122,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script src="assets/js/smoothproducts.min.js"></script>
-    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>

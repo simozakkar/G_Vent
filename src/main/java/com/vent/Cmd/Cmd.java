@@ -1,8 +1,9 @@
 package com.vent.Cmd;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.vent.Article.Article;
+import com.vent.User.User;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 
@@ -13,13 +14,33 @@ public class Cmd {
     @Id
     private int codeCmd;
 
-    private int codeArt;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "codeArt")
+    private Article article;
 
-    private int codeClient;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "codeClient")
+    private User client;
 
     private int qteCmd;
 
     private LocalDate dateCmd;
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
+
+    public User getClient() {
+        return client;
+    }
+
+    public void setClient(User client) {
+        this.client = client;
+    }
 
     public int getCodeCmd() {
         return codeCmd;
@@ -27,22 +48,6 @@ public class Cmd {
 
     public void setCodeCmd(int codeCmd) {
         this.codeCmd = codeCmd;
-    }
-
-    public int getCodeArt() {
-        return codeArt;
-    }
-
-    public void setCodeArt(int codeArt) {
-        this.codeArt = codeArt;
-    }
-
-    public int getCodeClient() {
-        return codeClient;
-    }
-
-    public void setCodeClient(int codeClient) {
-        this.codeClient = codeClient;
     }
 
     public int getQteCmd() {

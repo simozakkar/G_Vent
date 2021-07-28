@@ -1,6 +1,9 @@
 package com.vent.Article;
 
+import com.vent.Cmd.Cmd;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -11,6 +14,8 @@ public class Article {
 
     private String nomArt;
 
+    private String  categ;
+
     private String genderArt;
 
     private int prixArt;
@@ -18,6 +23,17 @@ public class Article {
     private String descArt;
 
     private String rating;
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL )
+    private List<Cmd> cmds;
+
+    public String getCateg() {
+        return categ;
+    }
+
+    public void setCateg(String categ) {
+        this.categ = categ;
+    }
 
     public String getRating() {
         return rating;
@@ -77,20 +93,11 @@ public class Article {
         return Integer.parseInt(String.valueOf(this.rating.charAt(2)));
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Article article = (Article) o;
-        return codeArt == article.codeArt &&
-                prixArt == article.prixArt &&
-                Objects.equals(nomArt, article.nomArt) &&
-                Objects.equals(genderArt, article.genderArt) &&
-                Objects.equals(descArt, article.descArt);
+    public List<Cmd> getCmds() {
+        return cmds;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(codeArt, nomArt, genderArt, prixArt, descArt);
+    public void setCmds(List<Cmd> cmds) {
+        this.cmds = cmds;
     }
 }

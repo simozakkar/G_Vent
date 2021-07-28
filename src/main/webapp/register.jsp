@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: root
@@ -28,53 +29,24 @@
                     </a>
                     <h2 class="text-info">Registration</h2>
                 </div>
-                <form>
-                    <div class="form-group"><label for="name">Name</label><input class="form-control item" type="text" id="name"></div>
-                    <div class="form-group"><label for="password">Password</label><input class="form-control item" type="password" id="password"></div>
-                    <div class="form-group"><label for="email">Email</label><input class="form-control item" type="email" id="email"></div><button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                <form action="addUser.action" method="post">
+                    <div class="form-group"><label for="name">Full Name</label><input class="form-control item" type="text" name="name" id="name"></div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input class="form-control item" type="text" name="username" id="username">
+                        <s:if test="%{exist == true}">
+                            <span class="text-danger">Username already exists </span>
+                        </s:if>
+                    </div>
+                    <div class="form-group"><label for="psw">Password</label><input class="form-control item" type="password" name="psw" id="psw"></div>
+                    <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
                 </form>
             </div>
         </section>
     </main>
     <footer class="page-footer dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h5>Get started</h5>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Downloads</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>About us</h5>
-                    <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Reviews</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help desk</a></li>
-                        <li><a href="#">Forums</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Legal</h5>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div class="footer-copyright">
-            <p>© 2021 Copyright Text</p>
+            <p>© 2021 UAE FS TETOUAN</p>
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
