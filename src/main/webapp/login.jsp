@@ -19,11 +19,27 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container">
+            <a class="navbar-brand logo" href="index.action">
+                <img src="assets/img/logo.png" style="width: 81px;height: 50px;">
+            </a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link active" href="login.action" >Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.action">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <main class="page login-page">
         <section class="clean-block clean-form dark">
             <div class="container">
                 <div class="block-heading">
-                    <a class="navbar-brand logo" href="index.action"><img src="assets/img/logo_.png" style="width: 110px;height: 50px;"></a>
                     <h2 class="text-info">Log In</h2>
                 </div>
                 <form action="loginUser.action" method="post">

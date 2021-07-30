@@ -5,12 +5,12 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-public class Redirect extends ActionSupport implements SessionAware {
+public class RedirectUserNoteConnected extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
 
     @Override
     public String execute() throws Exception {
-        if (this.session.containsKey("isConnect")) return "home";
+        if (!this.session.containsKey("isConnect")) return "home";
         return SUCCESS;
     }
 

@@ -24,7 +24,7 @@ public class Article {
 
     private String rating;
 
-    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL )
+    @OneToMany(mappedBy = "article" ,cascade = CascadeType.ALL )
     private List<Cmd> cmds;
 
     public String getCateg() {

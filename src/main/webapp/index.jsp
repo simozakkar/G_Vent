@@ -34,8 +34,8 @@
                 <ul class="navbar-nav ml-auto">
                     <s:if test="%{#session.isConnect}">
                         <li class="nav-item"><span class="nav-link">Welecome <s:property value="#session.user.name" /></span></li>
-                        <li class="nav-item"><a class="nav-link" href="logout.action"><img src="assets/img/icons/logout.svg"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="logout.action"><img src="assets/img/icons/settings.svg"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="logout.action"><img style="opacity: 0.72" src="assets/img/icons/logout.svg"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="settings.action"><img style="opacity: 0.72" src="assets/img/icons/settings.svg"></a></li>
                     </s:if>
                     <s:else>
                         <li class="nav-item"><a class="nav-link" href="login.action">Login</a></li>
@@ -60,7 +60,7 @@
                                         <div class="form-check"><input class="form-check-input" type="radio" id="menGender" name="genderRadio"><label class="form-check-label" for="menGender">Men</label></div>
                                         <div class="form-check"><input class="form-check-input" type="radio" id="womenGender" name="genderRadio"><label class="form-check-label" for="womenGender">Women</label></div>
                                     </div>
-                                    <div class="filter-item">
+                                    <%--<div class="filter-item">
                                         <h3>PRODUCT CATEGORIES</h3>
                                         <div class="form-check"><input class="form-check-input" type="radio" id="allCateg"  name="categoriesRadio" checked><label class="form-check-label" for="allCateg">All</label></div>
                                         <div class="form-check"><input class="form-check-input" type="radio" id="eyeglassesCateg" name="categoriesRadio"><label class="form-check-label" for="eyeglassesCateg">EyeGlasses</label></div>
@@ -75,7 +75,7 @@
                                         <h3>PRICE</h3>
                                         <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-8"><label class="form-check-label" for="formCheck-8">ASC</label></div>
                                         <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-9"><label class="form-check-label" for="formCheck-9">DESC</label></div>
-                                    </div>
+                                    </div>--%>
                                 </div>
                             </div>
                             <div class="d-md-none"><a class="btn btn-link d-md-none filter-collapse" data-toggle="collapse" aria-expanded="false" aria-controls="filters" href="#filters" role="button">Filters<i class="icon-arrow-down filter-caret"></i></a>
@@ -87,7 +87,7 @@
                                             <div class="form-check"><input class="form-check-input" type="radio" id="menGender_" name="genderRadio_"><label class="form-check-label" for="menGender_">Men</label></div>
                                             <div class="form-check"><input class="form-check-input" type="radio" id="womenGender_" name="genderRadio_"><label class="form-check-label" for="womenGender_">Women</label></div>
                                         </div>
-                                        <div class="filter-item">
+                                        <%--<div class="filter-item">
                                             <h3>PRODUCT CATEGORIES</h3>
                                             <div class="form-check"><input class="form-check-input" type="radio" id="allCateg_"  name="categRadio_" checked><label class="form-check-label" for="allCateg_">All</label></div>
                                             <div class="form-check"><input class="form-check-input" type="radio" id="eyeglassesCateg_" name="categRadio_"><label class="form-check-label" for="eyeglassesCateg_">EyeGlasses</label></div>
@@ -103,7 +103,7 @@
                                             <h3>PRICE</h3>
                                             <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-8"><label class="form-check-label" for="formCheck-8">ASC</label></div>
                                             <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-9"><label class="form-check-label" for="formCheck-9">DESC</label></div>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                             </div>

@@ -5,6 +5,7 @@ import com.vent.User.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 
 @Entity
@@ -24,7 +25,8 @@ public class Cmd {
 
     private int qteCmd;
 
-    private LocalDate dateCmd;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCmd;
 
     public Article getArticle() {
         return article;
@@ -58,11 +60,11 @@ public class Cmd {
         this.qteCmd = qteCmd;
     }
 
-    public LocalDate getDateCmd() {
+    public Date getDateCmd() {
         return dateCmd;
     }
 
-    public void setDateCmd(LocalDate dateCmd) {
+    public void setDateCmd(Date dateCmd) {
         this.dateCmd = dateCmd;
     }
 }

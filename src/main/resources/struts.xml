@@ -42,6 +42,20 @@
             <result>/index.jsp</result>
         </action>
 
+        <action name="settings" class="com.vent.Action.RedirectUserNoteConnected">
+            <result name="success">/settings.jsp</result>
+            <result name="home">/index.jsp</result>
+        </action>
+
+        <action name="changePswOrName" class="com.vent.Action.Settings">
+            <result name="error" type="httpheader">
+                <param name="error">405</param>
+            </result>
+            <result name="success" type="httpheader">
+                <param name="status">200</param>
+            </result>
+        </action>
+
         <action name="payment" class="com.vent.Action.Payment">
             <result name="success">/payment.jsp</result>
             <result name="login" type="redirectAction">login</result>
@@ -51,6 +65,19 @@
         <action name="product" class="com.vent.Action.Product">
             <result name="success">/product-page.jsp</result>
             <result name="error">/index.jsp</result>
+        </action>
+
+        <action name="proceed" class="com.vent.Action.Proceed">
+            <result name="success" type="httpheader">200</result>
+            <result name="error" type="httpheader">405</result>
+            <result name="articleNotFound" type="httpheader">405</result>
+            <result name="articleNoMore" type="httpheader">405</result>
+        </action>
+
+        <action name="itextreport" class="com.vent.Action.ReportAction">
+        </action>
+        <action name="report" >
+            <result>report.jsp</result>
         </action>
 
     </package>

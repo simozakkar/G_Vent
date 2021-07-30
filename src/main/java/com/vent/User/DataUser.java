@@ -17,12 +17,22 @@ public class DataUser {
             throw exception;
         }
     }
+    public static void updateUser(User user){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            session.merge(user);
+            transaction.commit();
+        }catch (Exception exception){
+            transaction.rollback();
+            throw exception;
+        }
+    }
 
     public static User getUser(String username, String psw){
 
         User user = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try{
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
             String query = "SELECT * FROM Users WHERE username=:username AND psw=:psw";
             user = session.createNativeQuery(query, User.class)
                     .setParameter("username", username)

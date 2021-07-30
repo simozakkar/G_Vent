@@ -31,14 +31,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="shopping.action">
-                            <img src="assets/img/icons/shopping_cart.svg" style="opacity: 0.5">
-                            Shopping Cart
-                        </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="login.action">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="register.action">Register</a></li>
+                    <s:if test="%{#session.isConnect}">
+                        <li class="nav-item"><span class="nav-link">Welecome <s:property value="#session.user.name" /></span></li>
+                        <li class="nav-item"><a class="nav-link" href="logout.action"><img src="assets/img/icons/logout.svg"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="settings.action"><img src="assets/img/icons/settings.svg"></a></li>
+                    </s:if>
+                    <s:else>
+                        <li class="nav-item"><a class="nav-link" href="login.action">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.action">Register</a></li>
+                    </s:else>
                 </ul>
             </div>
         </div>

@@ -31,14 +31,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="shopping.action">
-                            <img src="assets/img/icons/shopping_cart.svg">
-                            Shopping Cart
-                        </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="login.action">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="register.action">Register</a></li>
+                    <li class="nav-item"><span class="nav-link">Welecome <s:property value="#session.user.name" /></span></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.action"><img src="assets/img/icons/logout.svg"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="settings.action"><img src="assets/img/icons/settings.svg"></a></li>
                 </ul>
             </div>
         </div>
@@ -97,7 +92,7 @@
                 </div>
             </section>
             <section class="clean-block payment-form dark">
-                <div class="container">
+                <div class="container" id="container">
                     <form>
                         <div class="products">
                             <div class="row">
@@ -106,31 +101,35 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="fullName">Full Name</label>
-                                            <input type="text" class="form-control" id="fullName" placeholder="Full Name">
+                                            <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">Address</label>
-                                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Enter a phone number:</label><br><br>
+                                        <input type="tel" id="phone" name="phone" placeholder="123-45-678" pattern="[0-9]{14}" required>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="city">City</label>
-                                            <input type="text" class="form-control" id="city">
+                                            <input type="text" class="form-control" id="city" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="state">State</label>
-                                            <input type="text" class="form-control" id="state">
+                                            <input type="text" class="form-control" id="state" required>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="inputZip">Zip</label>
-                                            <input type="text" class="form-control" id="inputZip">
+                                            <input type="number" pattern="[0-9]{10}" class="form-control" id="inputZip" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="selectCountry" class="col-sm-2 control-label">Country</label>
                                         <div>
-                                            <select class="form-control" id="selectCountry" name="country">
+                                            <select class="form-control" id="selectCountry" name="country" >
                                                 <option value="" selected="selected">(please select a country)</option>
                                                 <option value="AF">Afghanistan</option>
                                                 <option value="AL">Albania</option>
@@ -374,10 +373,14 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-sm-12">
+                                        <div id="statu"></div>
+                                        <div class="form-group"><button id="proceed" class="btn btn-primary btn-block" type="submit">Proceed</button></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-details">
+                        <%--<div class="card-details">
                             <h3 class="title">Credit Card Details</h3>
                             <div class="form-row">
                                 <div class="col-sm-7">
@@ -398,7 +401,7 @@
                                     <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Proceed</button></div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--%>
                     </form>
                 </div>
             </section>
@@ -424,12 +427,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 
     <script>
+
         $('#quantity').change(function (){
             let subtotal = this.value * 150;
             let total = subtotal + 4;
             $('#subtotal').html("$"+subtotal);
             $('#total').html("$"+total);
         });
+
+        $('#proceed').on('click', function (e){
+            e.preventDefault();
+            $('#proceed').hide();
+            let qte = $('#quantityInput').val();
+            let fullname = $('#fullName').val();
+            let address = $('#inputAddress').val();
+            let phone = $('#phone').val();
+            let city = $('#city').val();
+            let state = $('#state').val();
+            let zip = $('#inputZip').val();
+            let country = $('#selectCountry').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/proceed.action",
+                data:{
+                    idArt: <s:property value="idArt"/>,
+                    qte: qte,
+                    fullname: fullname,
+                    address: address,
+                    phone: phone,
+                    city: city,
+                    state: state,
+                    zip: zip,
+                    country: country
+                },
+                success: function(data){
+                    $('#proceed').show();
+                    $("#statu").html("<span class='text-success'>Your password has been successfully changed</span>");
+                },
+                error: function(error){
+                    $('#proceed').show();
+                    $("#statu").html("<span class='text-danger'>Some problem occurred. Please try again</span>");
+                }
+            });
+        })
 
     </script>
 </body>
