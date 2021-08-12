@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Product - Brand</title>
+    <title><s:property value="article.nomArt"/> Ray Ban</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
@@ -62,7 +62,7 @@
                                                 <img class="d-block w-100" src="assets/img/produits/<s:property value="idArt"/>.jpg" alt="First slide">
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="assets/img/produits/1.jpg" alt="Second slide">
+                                                <img class="d-block w-100" src="assets/img/produits/<s:property value="idArt"/>.jpg" alt="Second slide">
                                             </div>
                                         </div>
                                     </div>
@@ -96,9 +96,7 @@
                                             <s:param name="idArt" value="idArt"/>
                                         </s:url>
                                         <s:a href="%{paymentPage}" >
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="icon-basket"></i>Add to Cart
-                                            </button>
+                                            <button class="btn btn-primary" type="button">Buy</button>
                                         </s:a>
                                     </s:if>
                                     <s:else>

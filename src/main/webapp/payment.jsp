@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Shopping Cart - Brand</title>
+    <title><s:property value="article.nomArt"/> Payment</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
@@ -67,7 +67,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-md-2 quantity">
+                                            <div id="quantityDiv" class="col-6 col-md-2 quantity">
                                                 <label class="d-none d-md-block" for="quantityInput">Quantity</label>
                                                 <input type="number" min="1" max="<s:property value="quantity"/>" id="quantityInput" name="quantityInput" class="form-control quantity-input" value="1">
                                                 <s:if test="%{quantity <= 15}">
@@ -92,7 +92,7 @@
                 </div>
             </section>
             <section class="clean-block payment-form dark">
-                <div class="container" id="container">
+                <div id="container" class="container">
                     <form>
                         <div class="products">
                             <div class="row">
@@ -374,34 +374,16 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
-                                        <div id="statu"></div>
-                                        <div class="form-group"><button id="proceed" class="btn btn-primary btn-block" type="submit">Proceed</button></div>
+                                        <div class="form-group">
+                                            <div id="status"></div>
+                                            <div id="button">
+                                                <button id="proceed" class="btn btn-primary btn-block" type="submit">Proceed</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <%--<div class="card-details">
-                            <h3 class="title">Credit Card Details</h3>
-                            <div class="form-row">
-                                <div class="col-sm-7">
-                                    <div class="form-group"><label for="card_holder">Card Holder</label><input class="form-control" type="text" id="card_holder" placeholder="Card Holder" name="card_holder"></div>
-                                </div>
-                                <div class="col-sm-5">
-                                    <div class="form-group"><label>Expiration date</label>
-                                        <div class="input-group expiration-date"><input class="form-control" type="text" placeholder="MM" name="expiration_month"><input class="form-control" type="text" placeholder="YY" name="expiration_year"></div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="form-group"><label for="card_number">Card Number</label><input class="form-control" type="text" id="card_number" placeholder="Card Number" name="card_number"></div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group"><label for="cvc">CVC</label><input class="form-control" type="text" id="cvc" placeholder="CVC" name="cvc"></div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Proceed</button></div>
-                                </div>
-                            </div>
-                        </div>--%>
                     </form>
                 </div>
             </section>
@@ -426,9 +408,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 
-    <script>
 
-        $('#quantity').change(function (){
+    <script>
+        $('#quantityInput').change(function (){
             let subtotal = this.value * 150;
             let total = subtotal + 4;
             $('#subtotal').html("$"+subtotal);
@@ -436,8 +418,8 @@
         });
 
         $('#proceed').on('click', function (e){
-            e.preventDefault();
             $('#proceed').hide();
+            $('#status').html("<div id='spinner' class='spinner-border text-primary' role='status'> <span class='sr-only'>Loading...</span> </div>");
             let qte = $('#quantityInput').val();
             let fullname = $('#fullName').val();
             let address = $('#inputAddress').val();
@@ -462,16 +444,16 @@
                     country: country
                 },
                 success: function(data){
-                    $('#proceed').show();
-                    $("#statu").html("<span class='text-success'>Your password has been successfully changed</span>");
+                    $('#container').html(data);
+                    $('#quantityDiv').hide();
                 },
                 error: function(error){
                     $('#proceed').show();
-                    $("#statu").html("<span class='text-danger'>Some problem occurred. Please try again</span>");
+                    $("#status").html("<span class='text-danger'>Some problem occurred. Please try again</span>");
                 }
             });
+            return false;
         })
-
     </script>
 </body>
 

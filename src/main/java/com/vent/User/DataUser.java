@@ -13,8 +13,8 @@ public class DataUser {
             session.save(user);
             transaction.commit();
         }catch (Exception exception){
+            exception.printStackTrace();
             transaction.rollback();
-            throw exception;
         }
     }
     public static void updateUser(User user){

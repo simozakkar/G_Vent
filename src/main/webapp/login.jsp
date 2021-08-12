@@ -51,12 +51,12 @@
                         <label for="psw">Password</label>
                         <input class="form-control" type="password" name="psw" id="psw">
                     </div>
-                    <div class="form-group">
+                    <%--<div class="form-group">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="checkbox">
                             <label class="form-check-label" for="checkbox">Remember me</label>
                         </div>
-                    </div>
+                    </div>--%>
                     <button class="btn btn-primary btn-block" type="submit">Log In</button>
                 </form>
             </div>
@@ -70,11 +70,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script>
 
-    </script>
 </body>
-
-
-
 </html>

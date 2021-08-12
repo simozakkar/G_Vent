@@ -3,26 +3,40 @@ package com.vent.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.vent.Article.Article;
 import com.vent.Article.DataArticle;
+import com.vent.Cmd.Cmd;
+import com.vent.Cmd.DataCmd;
 import com.vent.Stock.DataStock;
+import com.vent.User.DataUser;
+import com.vent.User.User;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Map;
 
 public class Proceed extends ActionSupport implements SessionAware {
-
+    private String idCmd;
     private Map<String, Object> session;
 
     private int idArt;
     private Article article;
-    private int quantity;
-    private int qte;
+    private int qte = 0;
     private String fullname;
     private String address;
     private String phone;
     private String city;
     private String state;
-    private int zip;
+    private String zip;
     private String country;
+
+    public String getIdCmd() {
+        return idCmd;
+    }
+
+    public void setIdCmd(String idCmd) {
+        this.idCmd = idCmd;
+    }
 
     public int getQte() {
         return qte;
@@ -72,11 +86,11 @@ public class Proceed extends ActionSupport implements SessionAware {
         this.state = state;
     }
 
-    public int getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 
@@ -86,14 +100,6 @@ public class Proceed extends ActionSupport implements SessionAware {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public int getIdArt() {
@@ -114,18 +120,27 @@ public class Proceed extends ActionSupport implements SessionAware {
 
     @Override
     public String execute() throws Exception {
+        // return error if there is empty fields
+        if (this.fullname.equals("") || this.address.equals("") || this.phone.equals("") || this.city.equals("") || this.state.equals("")  || this.zip.equals("") || this.country.equals("") || this.qte == 0) return ERROR;
+
         this.article = DataArticle.getArticle(this.idArt);
-        this.quantity = DataStock.getQuntity(getIdArt());
-        if (this.quantity == -1 ) return "articleNoMore";
-        if (this.article != null ) return "articleNotFound";
-        System.out.println(this.toString());
+        User user = (User) this.session.get("user");
+        user = DataUser.getUser(user.getUsername(), user.getPsw());
+        // check if the quantity of product is fine
+        if (this.article == null  || user == null) return ERROR;
+        if(!DataStock.sustractionQte(this.idArt, this.qte)) return ERROR;
+        // insert thd CMD
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+//        System.out.println(formatter.format(date));
+        Date date = new Date();
+        this.idCmd = String.valueOf(this.idArt)+System.currentTimeMillis();
+        DataCmd.insertCmd(new Cmd(this.idCmd, this.article, user, this.qte, date, this.fullname, this.address, this.phone, this.city, this.state, this.zip, this.country));
         return SUCCESS;
     }
 
     @Override
     public void setSession(Map<String, Object> map) {
         this.session = map;
-
     }
 
     @Override
@@ -133,7 +148,6 @@ public class Proceed extends ActionSupport implements SessionAware {
         return "Proceed{" +
                 "idArt=" + idArt +
                 ", article=" + article +
-                ", quantity=" + quantity +
                 ", qte=" + qte +
                 ", fullname='" + fullname + '\'' +
                 ", address='" + address + '\'' +

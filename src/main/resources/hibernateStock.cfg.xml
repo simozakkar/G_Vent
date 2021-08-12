@@ -6,7 +6,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/G_Stock</property>
+    <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/g_stock</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">Password@2021</property>
     <property name="hibernate.current_session_context_class">thread</property>

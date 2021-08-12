@@ -59,10 +59,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label id="old" for="oldPassword">Old Password</label>
-                                        <input class="form-control item" type="Password" name="oldPassword" id="oldPassword">
+                                        <input class="form-control item" type="Password" name="oldPassword" id="oldPassword" required>
                                     </div>
-                                    <div id="statu"></div>
-                                    <button class="btn btn-primary btn-block" type="submit" id="changePsw">Change the password</button>
+                                    <div id="status"></div>
+                                    <button class="btn btn-primary btn-block" type="submit" id="changePsw" required>Change the password</button>
                                 </form>
                             </div>
                         </div>
@@ -80,14 +80,14 @@
                                 <form >
                                     <div class="form-group">
                                         <label for="newName">New Name</label>
-                                        <input class="form-control item" type="Password" name="newName" id="newName">
+                                        <input class="form-control item" type="Text" name="newName" id="newName" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input class="form-control" type="password" name="password" id="password">
+                                        <input class="form-control" type="password" name="password" id="password" required>
                                     </div>
-                                    <div id="statu_"></div>
-                                    <button id="changeName" class="btn btn-primary btn-block" type="submit">Change the name</button>
+                                    <div id="status_"></div>
+                                    <button id="changeName" class="btn btn-primary btn-block" type="sbmit">Change the name</button>
                                 </form>
                             </div>
                         </div>
@@ -107,6 +107,7 @@
     <script>
         $('#changePsw').on('click', function (e){
             e.preventDefault();
+            $('#status').html("<div id='spinner' class='spinner-border text-primary' role='status'> <span class='sr-only'>Loading...</span> </div>");
             $('#changePsw').hide()
             let newPassword = $('#newPassword').val();
             let oldPassword = $('#oldPassword').val();
@@ -119,16 +120,17 @@
                 },
                 success: function(data){
                     $('#changePsw').show()
-                    $("#statu").html("<span class='text-success'>Your password has been successfully changed</span>");
+                    $("#status").html("<span class='text-success'>Your password has been successfully changed</span>");
                 },
                 error: function(error){
                     $('#changePsw').show()
-                    $("#statu").html("<span class='text-danger'>Some problem occurred. Please try again</span>");
+                    $("#status").html("<span class='text-danger'>Some problem occurred. Please try again</span>");
                 }
             });
         })
         $('#changeName').on('click', function (e){
             e.preventDefault();
+            $('#status_').html("<div id='spinner' class='spinner-border text-primary' role='status'> <span class='sr-only'>Loading...</span> </div>");
             $('#changeName').hide()
             let password = $('#password').val();
             let name = $('#newName').val();
@@ -141,11 +143,11 @@
                 },
                 success: function(data){
                     $('#changeName').show()
-                    $("#statu_").html("<span class='text-success'>Your password has been successfully changed</span>");
+                    $("#status_").html("<span class='text-success'>Your Name has been successfully changed</span>");
                 },
                 error: function(error){
                     $('#changeName').show()
-                    $("#statu_").html("<span class='text-danger'>Some problem occurred. Please try again</span>");
+                    $("#status_").html("<span class='text-danger'>Some problem occurred. Please try again</span>");
                 }
             });
         })

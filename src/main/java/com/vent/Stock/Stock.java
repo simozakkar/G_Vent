@@ -20,7 +20,7 @@ public class Stock {
 
     private int prixProd;
 
-    private String descProd;
+    private String descrProd;
 
     public int getCodeProd() {
         return codeProd;
@@ -71,10 +71,10 @@ public class Stock {
     }
 
     public String getDescProd() {
-        return descProd;
+        return descrProd;
     }
 
-    public void setDescProd(String descProd) {
-        this.descProd = descProd;
+    public void setDescProd(String descrProd) {
+        this.descrProd = descrProd;
     }
 }
